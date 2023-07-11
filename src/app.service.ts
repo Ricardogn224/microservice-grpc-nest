@@ -9,7 +9,8 @@ export class AppService {
   constructor(private prisma: PrismaService) { }
 
   create(data: Prisma.HeroCreateInput): Promise<Hero> {
-    return this.prisma.hero.create({ data });
+    console.log(data);
+    return this.prisma.hero.create({ data, });
   }
 
   findAll(): Promise<Hero[]> {

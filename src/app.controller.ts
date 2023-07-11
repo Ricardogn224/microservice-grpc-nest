@@ -58,7 +58,7 @@ export class AppController implements HeroCRUDServiceController {
   @GrpcMethod(HERO_CR_UD_SERVICE_NAME, 'Add')
   async add(request: AddRequest): Promise<AddResponse> {
     const { hero } = request;
-    console.log(hero);
+    console.log(request["name"]);
     this.appService.create(hero);
     return { hero };
   }

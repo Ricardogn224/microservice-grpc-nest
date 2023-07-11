@@ -6,15 +6,15 @@ import { Observable } from "rxjs";
 export const protobufPackage = "hero.v1alpha";
 
 export interface Hero {
-  name: string;
-  id: number;
-  power: number;
-  hp: number;
+  name?: string;
+  id?: number;
+  power?: number;
+  hp?: number;
 }
 
 export interface GetRequest {
-  name: string;
-  id: number;
+  name?: string;
+  id?: number;
 }
 
 export interface GetResponse {
@@ -22,27 +22,27 @@ export interface GetResponse {
 }
 
 export interface AddRequest {
-  hero: Hero | undefined;
+  hero?: Hero;
 }
 
 export interface AddResponse {
-  hero: Hero | undefined;
+  hero?: Hero;
 }
 
 export interface UpdateRequest {
-  hero: Hero | undefined;
+  hero?: Hero;
 }
 
 export interface UpdateResponse {
-  hero: Hero | undefined;
+  hero?: Hero;
 }
 
 export interface DeleteResponse {
-  hero: Hero | undefined;
+  hero?: Hero;
 }
 
 export interface DeleteRequest {
-  id: string;
+  id?: string;
 }
 
 export const HERO_V1ALPHA_PACKAGE_NAME = "hero.v1alpha";
