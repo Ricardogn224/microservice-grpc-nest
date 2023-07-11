@@ -26,8 +26,7 @@ message GetResponse {
 }
 
 message AddRequest {
-  string name = 1;
-  int32 power = 2;
+  Hero hero = 1;
 }
 
 message AddResponse {

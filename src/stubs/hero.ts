@@ -22,9 +22,7 @@ export interface GetResponse {
 }
 
 export interface AddRequest {
-  data: HeroCreateInput;
-  name: string;
-  power: number;
+  hero: Hero | undefined;
 }
 
 export interface AddResponse {
@@ -32,8 +30,6 @@ export interface AddResponse {
 }
 
 export interface UpdateRequest {
-  id: any;
-  data: HeroUpdateInput;
   hero: Hero | undefined;
 }
 
