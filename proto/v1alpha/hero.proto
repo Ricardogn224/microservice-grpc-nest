@@ -3,10 +3,10 @@ syntax = "proto3";
 package hero.v1alpha;
 
 message Hero {
-  string name = 1;
-  int32 id = 2;
-  int32 power = 3;
-  int32 hp = 4;
+  int32 id = 1;
+  string name = 2;
+  string power = 3;
+  string hp = 4;
 }
 
 service HeroCRUDService {
@@ -17,16 +17,20 @@ service HeroCRUDService {
 }
 
 message GetRequest {
-  string name = 1;
-  int32 id = 2;
+  string id = 1;
+  string name = 2;
+  string power = 3;
+  string hp = 4;
 }
 
 message GetResponse {
-  repeated Hero heroes = 1;
+  repeated Hero hero = 1;
 }
 
 message AddRequest {
-  Hero hero = 1;
+  string name = 1;
+  string power = 2;
+  string hp = 3;
 }
 
 message AddResponse {

@@ -6,23 +6,27 @@ import { Observable } from "rxjs";
 export const protobufPackage = "hero.v1alpha";
 
 export interface Hero {
-  name: string;
   id: number;
-  power: number;
-  hp: number;
+  name: string;
+  power: string;
+  hp: string;
 }
 
 export interface GetRequest {
-  name: string;
-  id: number;
+  id?: string;
+  name?: string;
+  power?: string;
+  hp?: string;
 }
 
 export interface GetResponse {
-  heroes: Hero[];
+  hero?: Hero[];
 }
 
 export interface AddRequest {
-  hero: Hero | undefined;
+  name: string;
+  power: string;
+  hp: string;
 }
 
 export interface AddResponse {
