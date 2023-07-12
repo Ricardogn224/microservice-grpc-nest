@@ -9,7 +9,6 @@ export class AppService {
   constructor(private prisma: PrismaService) { }
 
   create(data: Prisma.HeroCreateInput): Promise<Hero> {
-    console.log(data);
     return this.prisma.hero.create({ data, });
   }
 

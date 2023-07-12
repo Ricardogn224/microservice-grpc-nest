@@ -14,7 +14,7 @@ import {
   UpdateResponse,
   HeroCRUDServiceControllerMethods,
 } from './stubs/hero';
-import { GrpcMethod } from '@nestjs/microservices';
+import { GrpcMethod, RpcException } from '@nestjs/microservices';
 import { Metadata } from '@grpc/grpc-js';
 
 @Controller()
@@ -22,20 +22,17 @@ import { Metadata } from '@grpc/grpc-js';
 export class AppController implements HeroCRUDServiceController {
   constructor(private readonly appService: AppService) { }
 
+  private handlePrismaErr(err: Error) {
+    console.error(err);
+    if (err instanceof RpcException) throw err;
+    else throw new RpcException(err);
+  }
+
   @GrpcMethod(HERO_CR_UD_SERVICE_NAME, 'Get')
   async get(request: GetRequest, metadata?: Metadata): Promise<GetResponse> {
-    let hero: Hero;
-    let heroes: Hero[] = [];
-    if (request.id) {
-      hero = await this.appService.findById(request.id);
-      return { heroes: [hero] };
-    } else if (request.name) {
-      hero = await this.appService.findByName(request.name);
-      return { heroes: [hero] };
-    } else {
-      heroes = await this.appService.findAll();
-      return { heroes };
-    }
+    let hero: Hero[] = [];
+    hero = await this.appService.findAll();
+    return { hero: hero as any };
   }
 
   @GrpcMethod(HERO_CR_UD_SERVICE_NAME, 'Update')
@@ -57,9 +54,14 @@ export class AppController implements HeroCRUDServiceController {
 
   @GrpcMethod(HERO_CR_UD_SERVICE_NAME, 'Add')
   async add(request: AddRequest): Promise<AddResponse> {
-    const { hero } = request;
-    console.log(request["name"]);
-    this.appService.create(hero);
-    return { hero };
+    try {
+      console.log(request);
+      const hero = await this.appService.create(request);
+      
+      
+      return { hero: hero as any };
+    } catch (error) {
+      this.handlePrismaErr(error);
+    }
   }
 }
