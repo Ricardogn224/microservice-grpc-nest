@@ -1,8 +1,7 @@
 // Nom de fichier : app.service.ts
 import { Injectable } from '@nestjs/common';
-import { Hero } from './stubs/hero';
 import { PrismaService } from './prisma.service';
-import { Prisma } from '@prisma/client';
+import { Prisma, Hero } from '@prisma/client';
 
 @Injectable()
 export class AppService {
@@ -24,12 +23,27 @@ export class AppService {
     return this.prisma.hero.findFirst({ where: { name } });
   }
 
-  async update(id: number, data: Prisma.HeroUpdateInput): Promise<Hero> {
-    await this.prisma.hero.update({ where: { id }, data });
-    return this.prisma.hero.findUnique({ where: { id } });
+  async heroes(params: {
+    where?: Prisma.HeroWhereInput;
+  }): Promise<Hero[]> {
+    const {where} = params;
+    return this.prisma.hero.findMany({
+      where,
+    });
   }
 
-  delete(id: number): Promise<Hero> {
-    return this.prisma.hero.delete({ where: { id } });
+  async update(params: {
+    where: Prisma.HeroWhereUniqueInput;
+    data: Prisma.HeroUpdateInput;
+  }): Promise<Hero> {
+      const { where, data } = params;
+      return this.prisma.hero.update({
+        data,
+        where,
+      });
+  }
+
+  delete(where: Prisma.HeroWhereUniqueInput): Promise<Hero> {
+    return this.prisma.hero.delete({ where, });
   }
 }

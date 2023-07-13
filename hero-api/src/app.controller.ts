@@ -30,9 +30,16 @@ export class AppController implements HeroCRUDServiceController {
 
   @GrpcMethod(HERO_CR_UD_SERVICE_NAME, 'Get')
   async get(request: GetRequest, metadata?: Metadata): Promise<GetResponse> {
-    let hero: Hero[] = [];
-    hero = await this.appService.findAll();
-    return { hero: hero as any };
+    try {
+      Object.keys(request).forEach((key) => request[key] === '' && delete request[key]);
+      const where = {
+        ...request,
+        id: request.id ? +request.id : undefined,
+      };
+      return { hero: (await this.appService.heroes({ where })) as any };
+    } catch (error) {
+      this.handlePrismaErr(error);
+    }
   }
 
   @GrpcMethod(HERO_CR_UD_SERVICE_NAME, 'Update')
@@ -40,8 +47,15 @@ export class AppController implements HeroCRUDServiceController {
     request: UpdateRequest,
     metadata?: Metadata,
   ): Promise<UpdateResponse> {
-    const hero = await this.appService.update(request.hero.id, request.hero);
-    return { hero };
+    let uptHero = JSON.parse(JSON.stringify(request));
+    delete uptHero.hero.id;
+    const hero = await this.appService.update({
+      where: {
+        id: +request.hero.id,
+      },
+      data: uptHero.hero,
+    });
+    return { hero: hero as any };
   }
 
   @GrpcMethod(HERO_CR_UD_SERVICE_NAME, 'Delete')
@@ -49,7 +63,12 @@ export class AppController implements HeroCRUDServiceController {
     request: DeleteRequest,
     metadata?: Metadata,
   ): Promise<DeleteResponse> {
-    return { hero: await this.appService.delete(Number(request.id)) };
+
+    const hero = await this.appService.delete({
+      id: +request.id,
+    });
+
+    return { hero: hero as any };
   }
 
   @GrpcMethod(HERO_CR_UD_SERVICE_NAME, 'Add')

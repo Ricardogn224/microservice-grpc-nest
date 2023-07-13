@@ -3,55 +3,55 @@ import { Metadata } from "@grpc/grpc-js";
 import { GrpcMethod, GrpcStreamMethod } from "@nestjs/microservices";
 import { Observable } from "rxjs";
 
-export const protobufPackage = "hero.v1alpha";
+export const protobufPackage = "user.v1alpha";
 
-export interface Hero {
-  id: number;
-  name: string;
-  power: string;
-  hp: string;
+export interface User {
+  id?: string | undefined;
+  firstName?: string | undefined;
+  lastName?: string | undefined;
+  email?: string | undefined;
 }
 
 export interface GetRequest {
-  id?: string;
-  name?: string;
-  power?: string;
-  hp?: string;
+  id?: string | undefined;
+  firstName?: string | undefined;
+  lastName?: string | undefined;
+  email?: string | undefined;
 }
 
 export interface GetResponse {
-  hero?: Hero[];
+  user?: User[] | undefined;
 }
 
 export interface AddRequest {
-  name: string;
-  power: string;
-  hp: string;
+  firstName: string
+    lastName: string
+    email: string
 }
 
 export interface AddResponse {
-  hero: Hero | undefined;
+  user?: User | undefined;
 }
 
 export interface UpdateRequest {
-  hero: Hero | undefined;
+  user?: User | undefined;
 }
 
 export interface UpdateResponse {
-  hero: Hero | undefined;
+  user?: User | undefined;
 }
 
 export interface DeleteResponse {
-  hero: Hero | undefined;
+  user?: User | undefined;
 }
 
 export interface DeleteRequest {
-  id: string;
+  id?: string | undefined;
 }
 
-export const HERO_V1ALPHA_PACKAGE_NAME = "hero.v1alpha";
+export const USER_V1ALPHA_PACKAGE_NAME = "user.v1alpha";
 
-export interface HeroCRUDServiceClient {
+export interface UserCRUDServiceClient {
   get(request: GetRequest, metadata?: Metadata): Observable<GetResponse>;
 
   add(request: AddRequest, metadata?: Metadata): Observable<AddResponse>;
@@ -61,7 +61,7 @@ export interface HeroCRUDServiceClient {
   delete(request: DeleteRequest, metadata?: Metadata): Observable<DeleteResponse>;
 }
 
-export interface HeroCRUDServiceController {
+export interface UserCRUDServiceController {
   get(request: GetRequest, metadata?: Metadata): Promise<GetResponse> | Observable<GetResponse> | GetResponse;
 
   add(request: AddRequest, metadata?: Metadata): Promise<AddResponse> | Observable<AddResponse> | AddResponse;
@@ -77,19 +77,19 @@ export interface HeroCRUDServiceController {
   ): Promise<DeleteResponse> | Observable<DeleteResponse> | DeleteResponse;
 }
 
-export function HeroCRUDServiceControllerMethods() {
+export function UserCRUDServiceControllerMethods() {
   return function (constructor: Function) {
     const grpcMethods: string[] = ["get", "add", "update", "delete"];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
-      GrpcMethod("HeroCRUDService", method)(constructor.prototype[method], method, descriptor);
+      GrpcMethod("UserCRUDService", method)(constructor.prototype[method], method, descriptor);
     }
     const grpcStreamMethods: string[] = [];
     for (const method of grpcStreamMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
-      GrpcStreamMethod("HeroCRUDService", method)(constructor.prototype[method], method, descriptor);
+      GrpcStreamMethod("UserCRUDService", method)(constructor.prototype[method], method, descriptor);
     }
   };
 }
 
-export const HERO_CR_UD_SERVICE_NAME = "HeroCRUDService";
+export const USER_CR_UD_SERVICE_NAME = "UserCRUDService";

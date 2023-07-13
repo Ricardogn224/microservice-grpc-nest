@@ -1,15 +1,15 @@
 syntax = "proto3";
 
-package hero.v1alpha;
+package user.v1alpha;
 
-message Hero {
-  int32 id = 1;
-  string name = 2;
-  string power = 3;
-  string hp = 4;
+message User {
+  string id = 1;
+  string firstName = 2;
+  string lastName = 3;
+  string email = 4;
 }
 
-service HeroCRUDService {
+service UserCRUDService {
   rpc Get (GetRequest) returns (GetResponse);
   rpc Add (AddRequest) returns (AddResponse);
   rpc Update (UpdateRequest) returns (UpdateResponse);
@@ -18,39 +18,37 @@ service HeroCRUDService {
 
 message GetRequest {
   string id = 1;
-  string name = 2;
-  string power = 3;
-  string hp = 4;
+  string firstName = 2;
+  string lastName = 3;
+  string email = 4;
 }
 
 message GetResponse {
-  repeated Hero hero = 1;
+  repeated User user = 1;
 }
 
 message AddRequest {
-  string name = 1;
-  string power = 2;
-  string hp = 3;
+  string firstName = 1;
+  string lastName = 2;
+  string email = 3;
 }
 
 message AddResponse {
-  Hero hero = 1;
+  User user = 1;
 }
 
 message UpdateRequest {
-  Hero hero = 1;
+  User user = 1;
 }
 
 message UpdateResponse {
-  Hero hero = 1;
+  User user = 1;
 }
 
 message DeleteResponse {
-  Hero hero = 1;
+  User user = 1;
 }
 
 message DeleteRequest {
   string id = 1;
 }
-
-

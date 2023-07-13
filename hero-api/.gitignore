@@ -1,11 +1,6 @@
 # compiled output
-hero-api/dist
-hero-api/node_modules
-
-user-api/dist
-user-api/node_modules
-
-proto/node_modules
+/dist
+/node_modules
 
 # Logs
 logs
