@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package rdv.v1alpha;
+
+message RDV {
+  string id = 1;
+  string name = 2;
+  string idUser = 3;
+  string participant = 4;
+}
+
+service RdvCRUDService {
+  rpc Get (GetRequest) returns (GetResponse);
+  rpc Add (AddRequest) returns (AddResponse);
+  rpc Update (UpdateRequest) returns (UpdateResponse);
+  rpc Delete (DeleteRequest) returns (DeleteResponse);
+}
+
+message GetRequest {
+  string id = 1;
+  string name = 2;
+  string idUser = 3;
+  string participant = 4;
+}
+
+message GetResponse {
+  repeated RDV rdv = 1;
+}
+
+message AddRequest {
+  string name = 1;
+  string idUser = 2;
+  string participant = 3;
+}
+
+message AddResponse {
+  RDV rdv = 1;
+}
+
+message UpdateRequest {
+  RDV rdv = 1;
+}
+
+message UpdateResponse {
+  RDV rdv = 1;
+}
+
+message DeleteResponse {
+  RDV rdv = 1;
+}
+
+message DeleteRequest {
+  string id = 1;
+}
+

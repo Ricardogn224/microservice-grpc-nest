@@ -3,55 +3,55 @@ import { Metadata } from "@grpc/grpc-js";
 import { GrpcMethod, GrpcStreamMethod } from "@nestjs/microservices";
 import { Observable } from "rxjs";
 
-export const protobufPackage = "user.v1alpha";
+export const protobufPackage = "rdv.v1alpha";
 
-export interface User {
+export interface RDV {
   id?: string | undefined;
-  firstName?: string | undefined;
-  lastName?: string | undefined;
-  email?: string | undefined;
+  name?: string | undefined;
+  idUser?: string | undefined;
+  participant?: string | undefined;
 }
 
 export interface GetRequest {
   id?: string | undefined;
-  firstName?: string | undefined;
-  lastName?: string | undefined;
-  email?: string | undefined;
+  name?: string | undefined;
+  idUser?: string | undefined;
+  participant?: string | undefined;
 }
 
 export interface GetResponse {
-  user?: User[] | undefined;
+  rdv?: RDV[] | undefined;
 }
 
 export interface AddRequest {
-  firstName?: string | undefined;
-  lastName?: string | undefined;
-  email?: string | undefined;
+  name?: string | undefined;
+  idUser?: string | undefined;
+  participant?: string | undefined;
 }
 
 export interface AddResponse {
-  user?: User | undefined;
+  rdv?: RDV | undefined;
 }
 
 export interface UpdateRequest {
-  user?: User | undefined;
+  rdv?: RDV | undefined;
 }
 
 export interface UpdateResponse {
-  user?: User | undefined;
+  rdv?: RDV | undefined;
 }
 
 export interface DeleteResponse {
-  user?: User | undefined;
+  rdv?: RDV | undefined;
 }
 
 export interface DeleteRequest {
   id?: string | undefined;
 }
 
-export const USER_V1ALPHA_PACKAGE_NAME = "user.v1alpha";
+export const RDV_V1ALPHA_PACKAGE_NAME = "rdv.v1alpha";
 
-export interface UserCRUDServiceClient {
+export interface RdvCRUDServiceClient {
   get(request: GetRequest, metadata?: Metadata): Observable<GetResponse>;
 
   add(request: AddRequest, metadata?: Metadata): Observable<AddResponse>;
@@ -61,7 +61,7 @@ export interface UserCRUDServiceClient {
   delete(request: DeleteRequest, metadata?: Metadata): Observable<DeleteResponse>;
 }
 
-export interface UserCRUDServiceController {
+export interface RdvCRUDServiceController {
   get(request: GetRequest, metadata?: Metadata): Promise<GetResponse> | Observable<GetResponse> | GetResponse;
 
   add(request: AddRequest, metadata?: Metadata): Promise<AddResponse> | Observable<AddResponse> | AddResponse;
@@ -77,19 +77,19 @@ export interface UserCRUDServiceController {
   ): Promise<DeleteResponse> | Observable<DeleteResponse> | DeleteResponse;
 }
 
-export function UserCRUDServiceControllerMethods() {
+export function RdvCRUDServiceControllerMethods() {
   return function (constructor: Function) {
     const grpcMethods: string[] = ["get", "add", "update", "delete"];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
-      GrpcMethod("UserCRUDService", method)(constructor.prototype[method], method, descriptor);
+      GrpcMethod("RdvCRUDService", method)(constructor.prototype[method], method, descriptor);
     }
     const grpcStreamMethods: string[] = [];
     for (const method of grpcStreamMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
-      GrpcStreamMethod("UserCRUDService", method)(constructor.prototype[method], method, descriptor);
+      GrpcStreamMethod("RdvCRUDService", method)(constructor.prototype[method], method, descriptor);
     }
   };
 }
 
-export const USER_CR_UD_SERVICE_NAME = "UserCRUDService";
+export const RDV_CR_UD_SERVICE_NAME = "RdvCRUDService";
