@@ -13,6 +13,8 @@ L'application a pour objectif de gérer des rendez-vous entre utilisateur
 
 docker compose up -d mariadb
 
+lancer npx prisma migrate dev dans chacune des API
+
 ## Nos APIs
 
 Nous avons 3 API fonctionnels : user-api, rdv-api, lieu-api
