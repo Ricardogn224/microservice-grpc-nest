@@ -16,6 +16,8 @@ export interface RDV {
   rdvDate?: string | undefined;
   rdvHour?: string | undefined;
   idLieu?: string | undefined;
+  status?: string | undefined;
+  description?: string | undefined;
 }
 
 export interface GetRequest {
@@ -26,6 +28,8 @@ export interface GetRequest {
   rdvDate?: string | undefined;
   rdvHour?: string | undefined;
   idLieu?: string | undefined;
+  status?: string | undefined;
+  description?: string | undefined;
 }
 
 export interface GetResponse {
@@ -35,10 +39,12 @@ export interface GetResponse {
 export interface AddRequest {
   name?: string | undefined;
   idUser?: string | undefined;
-  participantId?: string | undefined;
   rdvDate?: string | undefined;
   rdvHour?: string | undefined;
   idLieu?: string | undefined;
+  status?: string | undefined;
+  description?: string | undefined;
+  participantId?: string | undefined;
 }
 
 export interface AddResponse {

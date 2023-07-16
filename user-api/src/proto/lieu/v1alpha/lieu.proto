@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package lieu.v1alpha;
+
+
+message LIEU {
+  string id = 1;
+  string format = 2;
+  string etablissement_plateforme = 3;
+  string salle_lien = 4;
+
+}
+
+service LieuCRUDService {
+  rpc Get (GetRequest) returns (GetResponse);
+  rpc Add (AddRequest) returns (AddResponse);
+  rpc Update (UpdateRequest) returns (UpdateResponse);
+  rpc Delete (DeleteRequest) returns (DeleteResponse);
+}
+
+message GetRequest {
+  string id = 1;
+  string format = 2;
+  string etablissement_plateforme = 3;
+  string salle_lien = 4;
+}
+
+message GetResponse {
+  repeated LIEU lieu = 1;
+}
+
+message AddRequest {
+  string format = 1;
+  string etablissement_plateforme = 2;
+  string salle_lien = 3;
+}
+
+message AddResponse {
+  LIEU lieu = 1;
+}
+
+message UpdateRequest {
+  LIEU lieu = 1;
+}
+
+message UpdateResponse {
+  LIEU lieu = 1;
+}
+
+message DeleteResponse {
+  LIEU lieu = 1;
+}
+
+message DeleteRequest {
+  string id = 1;
+}

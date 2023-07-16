@@ -16,6 +16,8 @@ message RDV {
   string rdv_date = 7;
   string rdv_hour = 8;
   string idLieu = 9;
+  string status = 10;
+  string description = 11;
 }
 
 service RdvCRUDService {
@@ -34,6 +36,8 @@ message GetRequest {
   string rdv_date = 5;
   string rdv_hour = 6;
   string idLieu = 7;
+  string status = 8;
+  string description = 9;
 }
 
 message GetResponse {
@@ -43,11 +47,12 @@ message GetResponse {
 message AddRequest {
   string name = 1;
   string idUser = 2;
-  string participantId = 3;
-
-  string rdv_date = 5;
-  string rdv_hour = 6;
-  string idLieu = 7;
+  string rdv_date = 3;
+  string rdv_hour = 4;
+  string idLieu = 5;
+  string status = 6;
+  string description = 7;
+  string participantId = 8;
 }
 
 message AddResponse {
