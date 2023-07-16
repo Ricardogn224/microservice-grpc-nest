@@ -2,21 +2,27 @@
 import { Metadata } from "@grpc/grpc-js";
 import { GrpcMethod, GrpcStreamMethod } from "@nestjs/microservices";
 import { Observable } from "rxjs";
+import { Timestamp } from "../../google/protobuf/timestamp";
 
 export const protobufPackage = "rdv.v1alpha";
 
 export interface RDV {
-  id: string;
-  name: string;
-  idUser: string;
-  participantId: string;
+  id: string ;
+  name: string ;
+  idUser: string ;
+  participantId: string ;
+  createdAt: Timestamp ;
+  updatedAt: Timestamp ;
+  rdvDate: Timestamp ;
+  rdvHour: string ;
+  idLieu: string ;
 }
 
 export interface GetRequest {
-  id: string;
-  name: string;
-  idUser: string;
-  participantId: string;
+  id: string ;
+  name: string ;
+  idUser: string ;
+  participantId: string ;
 }
 
 export interface GetResponse {
@@ -30,23 +36,23 @@ export interface AddRequest {
 }
 
 export interface AddResponse {
-  rdv?: RDV | undefined;
+  rdv: RDV ;
 }
 
 export interface UpdateRequest {
-  rdv?: RDV | undefined;
+  rdv?: RDV ;
 }
 
 export interface UpdateResponse {
-  rdv?: RDV | undefined;
+  rdv?: RDV ;
 }
 
 export interface DeleteResponse {
-  rdv?: RDV | undefined;
+  rdv?: RDV ;
 }
 
 export interface DeleteRequest {
-  id?: string | undefined;
+  id?: string ;
 }
 
 export const RDV_V1ALPHA_PACKAGE_NAME = "rdv.v1alpha";

@@ -15,4 +15,9 @@ model Rdv {
   name        String
   idUser      String
   participantId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  rdvDate DateTime
+  rdvHour String
+  idLieu      String
 }

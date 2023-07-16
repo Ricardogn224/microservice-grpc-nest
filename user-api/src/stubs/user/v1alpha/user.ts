@@ -27,40 +27,40 @@ export interface GetResponse {
 }
 
 export interface AddRequest {
-  firstName: string;
+  firstName: string ;
   lastName: string ;
   email: string ;
   password: string ;
 }
 
 export interface AddResponse {
-  user?: User | undefined;
+  user: User ;
 }
 
 export interface UpdateRequest {
-  user?: User | undefined;
+  user?: User ;
 }
 
 export interface UpdateResponse {
-  user?: User | undefined;
+  user?: User ;
 }
 
 export interface DeleteResponse {
-  user?: User | undefined;
+  user?: User ;
 }
 
 export interface DeleteRequest {
-  id?: string | undefined;
+  id?: string ;
 }
 
 export interface CheckPasswordRequest {
-  email?: string | undefined;
-  password?: string | undefined;
+  email?: string ;
+  password?: string ;
 }
 
 export interface CheckPasswordResponse {
-  status?: CheckPasswordResponse_STATUS | undefined;
-  user?: User | undefined;
+  status?: CheckPasswordResponse_STATUS ;
+  user?: User ;
 }
 
 export enum CheckPasswordResponse_STATUS {
@@ -72,12 +72,12 @@ export enum CheckPasswordResponse_STATUS {
 }
 
 export interface MakeAdminRequest {
-  id?: string | undefined;
-  email?: string | undefined;
+  id?: string ;
+  email?: string ;
 }
 
 export interface MakeAdminResponse {
-  user?: User | undefined;
+  user?: User ;
 }
 
 export const USER_V1ALPHA_PACKAGE_NAME = "user.v1alpha";
