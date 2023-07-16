@@ -43,4 +43,30 @@ export class AppService {
   delete(where: Prisma.UserWhereUniqueInput): Promise<User> {
     return this.prisma.user.delete({ where, });
   }
+
+  async checkPassword(
+    email: string,
+    password: string,
+  ): Promise<{ user: User; match: boolean }> {
+    const user = await this.prisma.user.findFirst({
+      where: { email },
+      select: {
+        createdAt: true,
+        email: true,
+        firstName: true,
+        id: true,
+        lastName: true,
+        updatedAt: true,
+        password: true,
+      },
+    });
+
+    if (!user) {
+      return { user: null, match: false };
+    }
+
+    const match = password === user.password;
+
+    return { user, match };
+  }
 }

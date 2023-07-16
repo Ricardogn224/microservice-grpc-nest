@@ -2,31 +2,35 @@
 import { Metadata } from "@grpc/grpc-js";
 import { GrpcMethod, GrpcStreamMethod } from "@nestjs/microservices";
 import { Observable } from "rxjs";
+import { Timestamp } from "../../google/protobuf/timestamp";
 
 export const protobufPackage = "user.v1alpha";
 
 export interface User {
-  id?: string | undefined;
-  firstName?: string | undefined;
-  lastName?: string | undefined;
-  email?: string | undefined;
+  id: string ;
+  firstName: string ;
+  lastName: string ;
+  email: string ;
+  createdAt: Timestamp ;
+  updatedAt: Timestamp ;
 }
 
 export interface GetRequest {
-  id?: string | undefined;
-  firstName?: string | undefined;
-  lastName?: string | undefined;
-  email?: string | undefined;
+  id: string ;
+  firstName: string ;
+  lastName: string ;
+  email: string ;
 }
 
 export interface GetResponse {
-  user?: User[] | undefined;
+  user: User[] ;
 }
 
 export interface AddRequest {
-  firstName: string
-    lastName: string
-    email: string
+  firstName: string;
+  lastName: string ;
+  email: string ;
+  password: string ;
 }
 
 export interface AddResponse {
@@ -49,6 +53,33 @@ export interface DeleteRequest {
   id?: string | undefined;
 }
 
+export interface CheckPasswordRequest {
+  email?: string | undefined;
+  password?: string | undefined;
+}
+
+export interface CheckPasswordResponse {
+  status?: CheckPasswordResponse_STATUS | undefined;
+  user?: User | undefined;
+}
+
+export enum CheckPasswordResponse_STATUS {
+  OK = 0,
+  WRONG_PASSWORD = 1,
+  NOT_FOUND = 2,
+  INTERNAL = 3,
+  UNRECOGNIZED = -1,
+}
+
+export interface MakeAdminRequest {
+  id?: string | undefined;
+  email?: string | undefined;
+}
+
+export interface MakeAdminResponse {
+  user?: User | undefined;
+}
+
 export const USER_V1ALPHA_PACKAGE_NAME = "user.v1alpha";
 
 export interface UserCRUDServiceClient {
@@ -59,6 +90,10 @@ export interface UserCRUDServiceClient {
   update(request: UpdateRequest, metadata?: Metadata): Observable<UpdateResponse>;
 
   delete(request: DeleteRequest, metadata?: Metadata): Observable<DeleteResponse>;
+
+  checkPassword(request: CheckPasswordRequest, metadata?: Metadata): Observable<CheckPasswordResponse>;
+
+  makeAdmin(request: MakeAdminRequest, metadata?: Metadata): Observable<MakeAdminResponse>;
 }
 
 export interface UserCRUDServiceController {
@@ -75,11 +110,21 @@ export interface UserCRUDServiceController {
     request: DeleteRequest,
     metadata?: Metadata,
   ): Promise<DeleteResponse> | Observable<DeleteResponse> | DeleteResponse;
+
+  checkPassword(
+    request: CheckPasswordRequest,
+    metadata?: Metadata,
+  ): Promise<CheckPasswordResponse> | Observable<CheckPasswordResponse> | CheckPasswordResponse;
+
+  makeAdmin(
+    request: MakeAdminRequest,
+    metadata?: Metadata,
+  ): Promise<MakeAdminResponse> | Observable<MakeAdminResponse> | MakeAdminResponse;
 }
 
 export function UserCRUDServiceControllerMethods() {
   return function (constructor: Function) {
-    const grpcMethods: string[] = ["get", "add", "update", "delete"];
+    const grpcMethods: string[] = ["get", "add", "update", "delete", "checkPassword", "makeAdmin"];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
       GrpcMethod("UserCRUDService", method)(constructor.prototype[method], method, descriptor);

@@ -5,7 +5,15 @@ hero-api/node_modules
 user-api/dist
 user-api/node_modules
 
+rdv-api/dist
+tdv-api/node_modules
+
 proto/node_modules
+
+user-api/prisma/migrations
+auth-api/prisma/migrations
+rdv-api/prisma/migrations
+hero-api/prisma/migrations
 
 # Logs
 logs

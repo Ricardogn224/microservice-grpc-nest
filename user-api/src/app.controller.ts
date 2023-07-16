@@ -7,8 +7,13 @@ import {
   DeleteResponse,
   GetRequest,
   GetResponse,
+  CheckPasswordRequest,
+  CheckPasswordResponse,
+  MakeAdminRequest,
+  MakeAdminResponse,
   USER_CR_UD_SERVICE_NAME,
   User,
+  CheckPasswordResponse_STATUS,
   UserCRUDServiceController,
   UpdateRequest,
   UpdateResponse,
@@ -28,7 +33,7 @@ export class AppController implements UserCRUDServiceController {
     else throw new RpcException(err);
   }
 
-  @GrpcMethod(USER_CR_UD_SERVICE_NAME, 'Get')
+  @GrpcMethod('UserService')
   async get(request: GetRequest, metadata?: Metadata): Promise<GetResponse> {
     try {
       Object.keys(request).forEach((key) => request[key] === '' && delete request[key]);
@@ -42,7 +47,38 @@ export class AppController implements UserCRUDServiceController {
     }
   }
 
-  @GrpcMethod(USER_CR_UD_SERVICE_NAME, 'Update')
+  @GrpcMethod('UserService')
+  async checkPassword(req: CheckPasswordRequest, metadata?: Metadata): Promise<CheckPasswordResponse> {
+    try {
+      const { user, match } = await this.appService.checkPassword(
+        req.email,
+        req.password,
+      );
+
+      if (!user) {
+        return {
+          status: CheckPasswordResponse_STATUS.NOT_FOUND,
+          user: undefined,
+        };
+      }
+
+      if (match) {
+        return {
+          user: user as any,
+          status: CheckPasswordResponse_STATUS.OK,
+        };
+      }
+
+      return {
+        status: CheckPasswordResponse_STATUS.WRONG_PASSWORD,
+        user: undefined,
+      };
+    } catch (error) {
+      this.handlePrismaErr(error);
+    }
+  }
+
+  @GrpcMethod('UserService')
   async update(
     request: UpdateRequest,
     metadata?: Metadata,
@@ -58,7 +94,7 @@ export class AppController implements UserCRUDServiceController {
     return { user: user as any };
   }
 
-  @GrpcMethod(USER_CR_UD_SERVICE_NAME, 'Delete')
+  @GrpcMethod('UserService')
   async delete(
     request: DeleteRequest,
     metadata?: Metadata,
@@ -71,7 +107,7 @@ export class AppController implements UserCRUDServiceController {
     return { user: user as any };
   }
 
-  @GrpcMethod(USER_CR_UD_SERVICE_NAME, 'Add')
+  @GrpcMethod('UserService')
   async add(request: AddRequest): Promise<AddResponse> {
     try {
       console.log(request);
@@ -83,4 +119,20 @@ export class AppController implements UserCRUDServiceController {
       this.handlePrismaErr(error);
     }
   }
+
+  @GrpcMethod(USER_CR_UD_SERVICE_NAME, 'MakeAdmin')
+  async makeAdmin(request: MakeAdminRequest, metadata?: Metadata): Promise<MakeAdminResponse> {
+    try {
+      Object.keys(request).forEach((key) => request[key] === '' && delete request[key]);
+      const where = {
+        ...request,
+        id: request.id ? +request.id : undefined,
+      };
+      return { user: (await this.appService.users({ where })) as any };
+    } catch (error) {
+      this.handlePrismaErr(error);
+    }
+  }
+
+  
 }
