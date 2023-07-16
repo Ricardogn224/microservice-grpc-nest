@@ -13,7 +13,7 @@ export interface RDV {
   participantId: string ;
   createdAt: Timestamp ;
   updatedAt: Timestamp ;
-  rdvDate: Timestamp ;
+  rdvDate: string ;
   rdvHour: string ;
   idLieu: string ;
 }
@@ -23,6 +23,9 @@ export interface GetRequest {
   name: string ;
   idUser: string ;
   participantId: string ;
+  rdvDate: string ;
+  rdvHour: string ;
+  idLieu: string ;
 }
 
 export interface GetResponse {
@@ -33,6 +36,9 @@ export interface AddRequest {
   name: string ;
   idUser: string ;
   participantId: string ;
+  rdvDate: string ;
+  rdvHour: string ;
+  idLieu: string ;
 }
 
 export interface AddResponse {

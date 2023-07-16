@@ -8,6 +8,8 @@ user-api/node_modules
 rdv-api/dist
 tdv-api/node_modules
 
+lieu-api
+
 proto/node_modules
 
 user-api/prisma/migrations

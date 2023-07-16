@@ -12,10 +12,9 @@ message RDV {
 
   google.protobuf.Timestamp created_at = 5;
   google.protobuf.Timestamp updated_at = 6;
-  google.protobuf.Timestamp rdv_date = 7;
 
+  string rdv_date = 7;
   string rdv_hour = 8;
-
   string idLieu = 9;
 }
 
@@ -31,6 +30,10 @@ message GetRequest {
   string name = 2;
   string idUser = 3;
   string participantId = 4;
+
+  string rdv_date = 5;
+  string rdv_hour = 6;
+  string idLieu = 7;
 }
 
 message GetResponse {
@@ -41,6 +44,10 @@ message AddRequest {
   string name = 1;
   string idUser = 2;
   string participantId = 3;
+
+  string rdv_date = 5;
+  string rdv_hour = 6;
+  string idLieu = 7;
 }
 
 message AddResponse {
