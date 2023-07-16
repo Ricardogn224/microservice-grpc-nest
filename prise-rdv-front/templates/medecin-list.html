@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <title>home</title>
+</head>
+
+<body>
+    <h1>Liste des Médecins </h1>
+
+    <div class="flex flex-center space-around">
+        <form action="" method="post">
+            <div class="flex">
+                <div>
+
+                    <input type="text" placeholder="Cherchez votre medecin" name="nom">
+                </div>
+
+                <div>
+                    <input type="submit" value="chercher">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <section>
+        <div class="flex space-around">
+            <div>
+                <div class="card ">
+                    <p>Image </p>
+                    <p>Nom </p>
+                    <p>Prenom </p>
+                    <p>Specialite </p>
+                    <p>Adresse </p>
+                    <p>Telephone </p>
+                    <p>Email </p>
+                    <a href="/prendre-rdv/">Prendre rendez-vous</a>
+                </div>
+            </div>
+
+            <div>
+                <div class="card ">
+                    <p>Image </p>
+                    <p>Nom </p>
+                    <p>Prenom </p>
+                    <p>Specialite </p>
+                    <p>Adresse </p>
+                    <p>Telephone </p>
+                    <p>Email </p>
+                    <a href="/prendre-rdv/">Prendre rendez-vous</a>
+                </div>
+            </div>
+
+            <div>
+                <div class="card ">
+                    <p>Image </p>
+                    <p>Nom </p>
+                    <p>Prenom </p>
+                    <p>Specialite </p>
+                    <p>Adresse </p>
+                    <p>Telephone </p>
+                    <p>Email </p>
+                    <a href="/prendre-rdv/">Prendre rendez-vous</a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+@import url("https://fr.allfont.net/allfont.css?fonts='Coolvetica-Regular', arial-regular");
+
+.flex {
+    display: flex;
+
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.space-around {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.space-between {
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+body {
+    font-family: 'Coolvetica-Regular', arial-regular;
+    font-size: 1.2rem;
+    background-color: white;
+    margin: 0;
+}
+
+.mt-80 {
+    margin-top: 80px;
+}
+
+.w-80 {
+    width: 80%;
+}
+
+.mr-10 {
+    margin-right: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <title>home</title>
+</head>
+
+<body>
+    <section>
+        <div class="flex space-between">
+            <div class="">
+                <ul class="flex">
+                    <li>Médecin sur rdv</li>
+                </ul>
+            </div>
+            <div>
+                <ul class="flex">
+                    
+                    <li><a href="/list-medecin">Prendez rendez vous </a></li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+    
+    <section>
+    <div class="flex-center">
+        <div>
+            <div>
+                <h1>J'ai dejà un compte</h1>
+            </div>
+
+            <div>
+                <form action="/" method="post">
+                    <div>
+                        <label for="">Email </label>
+                        <input type="text" name="email">
+                    </div>
+
+                    <div>
+                        <label for="">Mot de passe</label>
+                        <input type="password" name="password">
+                    </div>
+
+                    <div>
+                        <input type="checkbox" name="enregistrer-non" id="">
+                    </div>
+
+                    <input type="submit" value="Se connecter">
+                </form>
+            </div>
+        </div>
+    </div>
+    </section>
+
+
+    <section>
+        <div class="flex-center">
+            <div>
+                <h1>Vous êtes nouveau sur médecin sur rdv? </h1>
+                <h2>S'INSCRIRE </h2>
+                <form action="/" method="post">
+                <div>
+                    <div class="flex">
+                        <div>
+                            <input type="checkbox" name="Feminin" id="">
+                            <label for="">Feminin</label>    
+                        </div>
+                        <div>
+                            <input type="checkbox" name="Masculin" id="">
+                            <label for="">Masculin</label>   
+                        </div>
+                    </div>
+                    <div>
+                        <label for="">Nom </label>
+                        <input type="text" name="nom">
+                    </div>
+        
+                    <div>
+                        <label for="">Prénom</label>
+                        <input type="text" name="prenom">
+                    </div>
+
+                    <div>
+                        <label for="">Date de naissance</label>
+                        <input type="date" name="prenom">
+                    </div>
+
+                    <div>
+                        <label for="">Pays </label>
+                        <input type="text" name="pays">
+                    </div>
+
+                    <div>
+                        <label for="">Adresse </label>
+                        <input type="text" name="adresse">
+                    </div>
+
+                    <div>
+                        <label for="">Mot de passe</label>
+                        <input type="text" name="mdp">
+                    </div>
+
+                    <div>
+                        <label for="">Numéro de téléphone</label>
+                        <input type="text" name="mdp" placeholder="000000000">
+                    </div>
+
+                    <div>
+                        <p>
+                            Pour confirmer ce numéro, vous recevrez un code à 3 chiffres par SMS. Ce numéro sera utilisé pour la double authentification et les rappels de vos rendez-vous.
+                        </p>
+                    </div>
+
+                    <div>
+                        <input type="submit" value="VALIDER"/>
+                    </div>
+                    
+                </div>
+                </form>           
+            </div>
+        </div>
+        </section>
+
+</body>
+
+</html>

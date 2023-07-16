@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <title>home</title>
+</head>
+
+<body>
+    <section>
+        <nav>
+            <div class="flex space-between">
+                <div class="logo">
+                    <a href="/">
+                        <p>Médecin sur rdv</p>
+                    </a>
+                    
+                </div>
+    
+                <div class="flex space-between zone-nav-link">
+                    <div class="pro-link flex-center">
+                        <a >Vous etes un professionnel ?</a>
+                    </div>
+                    <div class="flex flex-center space-around zone-connexion">
+                        <div>
+                            <img height="25px" width="25px" src="{{ url_for('static', filename='images/stetoscope.svg') }}" alt="" srcset="">
+                        </div>
+                        <div>
+                            <a href="/connexion">Se connecter</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <section>
+        <div class="form-card">
+            <div class="flex-center">
+                <h1>Ajouter un lieu </h1>
+            </div>
+            
+
+            <div class="flex-center">
+                
+                <form action="/add_lieu" method="post">
+                    <div>
+                    <div>
+                        
+                        <select name="format" id="">
+                            <option value="distanciel">distanciel</option>
+                            <option value="présentiel">présentiel</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        
+                        <input type="text" name="etablissementPlateforme" placeholder="etablissementPlateforme">
+                    </div>
+                    
+                    <div>
+                        
+                        <input type="text" name="salleLien" placeholder="salleLien">
+                    </div>
+
+                
+                    <div class="flex-center">
+                        <input type="submit" value="S'inscrire">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

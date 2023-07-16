@@ -11,15 +11,15 @@ datasource db {
 }
 
 model Rdv {
-  id          Int    @id @default(autoincrement())
-  name        String
-  idUser      String
-  participantId String @default("undefined")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  rdvDate String
-  rdvHour String
-  idLieu      String
-  status      String
-  description      String
+  id            Int      @id @default(autoincrement())
+  name          String
+  idUser        String
+  participantId String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  rdvDate       String
+  rdvHour       String
+  idLieu        String
+  status        String
+  description   String
 }

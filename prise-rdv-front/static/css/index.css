@@ -1,0 +1,190 @@
+@import url("https://fr.allfont.net/allfont.css?fonts='Coolvetica-Regular', arial-regular");
+@import url("https://fr.allfont.net/allfont.css?fonts='Coolvetica-Regular', arial-regular");
+nav {
+  background: #4FC0D0 0% 0% no-repeat padding-box;
+}
+nav .logo {
+  margin-left: 20px;
+  text-align: left;
+  font: normal normal bold 20px Copperplate;
+  color: white;
+}
+nav .pro-link {
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border-radius: 6px;
+  opacity: 1;
+  margin: auto;
+  height: 60%;
+}
+nav .pro-link a {
+  font: normal normal bold 20px Copperplate;
+  color: #1B6B93;
+  padding: 10px;
+}
+nav .zone-nav-link {
+  width: 40%;
+}
+nav .zone-connexion {
+  width: 200px;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.space-around {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.space-between {
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+body {
+  font-family: "Coolvetica-Regular", arial-regular;
+  font-size: 1.2rem;
+  background-color: white;
+  margin: 0;
+}
+
+.mt-80 {
+  margin-top: 80px;
+}
+
+.w-80 {
+  width: 80%;
+}
+
+.mr-10 {
+  margin-right: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.zone-offer {
+  transform: translateY(-50px);
+}
+.zone-offer .card-offer {
+  background: #E4FEFF 0% 0% no-repeat padding-box;
+  padding: 20px;
+  border-radius: 50px;
+  width: 20%;
+}
+.zone-offer .card-offer .title {
+  font: normal normal bold 20px Copperplate;
+  color: black;
+}
+.zone-offer .card-offer .content {
+  font: normal normal medium 15px Montserrat;
+  letter-spacing: 0px;
+  color: black;
+}
+.zone-offer .card-offer .action {
+  font: normal normal bold 14px Montserrat;
+  letter-spacing: 0px;
+  color: #1B6B93;
+  opacity: 1;
+}
+
+.pres {
+  background-color: #4FC0D0;
+  width: 100%;
+}
+.pres .presentation-text .txt-1 {
+  font: normal normal 600 35px Montserrat;
+  letter-spacing: 0px;
+  color: white;
+  opacity: 1;
+  margin: 0;
+}
+.pres .presentation-text .txt-2 {
+  font: normal normal 600 35px Montserrat;
+  letter-spacing: 0px;
+  color: white;
+  opacity: 1;
+}
+.pres form {
+  width: 100%;
+}
+.pres form input {
+  height: 80px;
+  width: 40%;
+  border-radius: 6px;
+  background-color: white;
+  border: none;
+  margin-top: 20px;
+  padding-left: 10px;
+  font: normal normal normal 20px Montserrat;
+  letter-spacing: 0px;
+  color: #1B6B93;
+  opacity: 1;
+}
+.pres .zone-pres {
+  padding-top: 80px;
+  padding-bottom: 180px;
+}
+
+.form-card {
+  background: #EBFDFF 0% 0% no-repeat padding-box;
+  border-radius: 6px;
+  opacity: 1;
+  width: 40%;
+  margin: auto;
+  margin-top: 80px;
+}
+.form-card h1 {
+  font: normal normal 600 20px/24px Montserrat;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 0px;
+  color: #1B6B93;
+  opacity: 1;
+  margin-bottom: 20px;
+}
+.form-card form input {
+  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border-radius: 6px;
+  opacity: 1;
+  width: 250px;
+  border: 0px;
+  margin-bottom: 10px;
+  height: 40px;
+  padding: 10px;
+}
+
+.navbar-gest ul {
+  list-style: none;
+}
+.navbar-gest ul li {
+  display: inline-block;
+  margin: 0 10px;
+}
+.navbar-gest ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-family: "Coolvetica-Regular", arial-regular;
+  font-size: 1.2rem;
+}
+.navbar-gest ul li a:hover {
+  color: #fff;
+}
+
+/*# sourceMappingURL=index.css.map */

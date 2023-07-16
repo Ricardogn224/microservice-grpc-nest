@@ -1,0 +1,18 @@
+.navbar-gest ul {
+  list-style: none;
+}
+.navbar-gest ul li {
+  display: inline-block;
+  margin: 0 10px;
+}
+.navbar-gest ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-family: "Coolvetica-Regular", arial-regular;
+  font-size: 1.2rem;
+}
+.navbar-gest ul li a:hover {
+  color: #fff;
+}
+
+/*# sourceMappingURL=navbar-gest.css.map */

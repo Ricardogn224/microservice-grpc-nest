@@ -1,0 +1,39 @@
+.pres {
+  background-color: #4FC0D0;
+  width: 100%;
+}
+.pres .presentation-text .txt-1 {
+  font: normal normal 600 35px Montserrat;
+  letter-spacing: 0px;
+  color: white;
+  opacity: 1;
+  margin: 0;
+}
+.pres .presentation-text .txt-2 {
+  font: normal normal 600 35px Montserrat;
+  letter-spacing: 0px;
+  color: white;
+  opacity: 1;
+}
+.pres form {
+  width: 100%;
+}
+.pres form input {
+  height: 80px;
+  width: 40%;
+  border-radius: 6px;
+  background-color: white;
+  border: none;
+  margin-top: 20px;
+  padding-left: 10px;
+  font: normal normal normal 20px Montserrat;
+  letter-spacing: 0px;
+  color: #1B6B93;
+  opacity: 1;
+}
+.pres .zone-pres {
+  padding-top: 80px;
+  padding-bottom: 180px;
+}
+
+/*# sourceMappingURL=presentation.css.map */

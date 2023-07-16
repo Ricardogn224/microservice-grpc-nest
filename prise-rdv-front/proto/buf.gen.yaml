@@ -1,0 +1,31 @@
+version: v1
+managed:
+  enabled: true
+plugins:
+  # Ici, vous pouvez définir le plugin, qui générera des stubs dans le langage de votre choix
+  - plugin: buf.build/community/stephenh-ts-proto
+  # Spécifiez le répertoire de sortie, où les stubs .ts seront générés
+    out: ../hero-api/src/stubs
+    opt:
+      - addGrpcMetadata=true
+      - nestJs=true
+      - useOptionals=all
+  - plugin: buf.build/community/stephenh-ts-proto
+  # Spécifiez le répertoire de sortie, où les stubs .ts seront générés
+    out: ../user-api/src/stubs
+    opt:
+      - addGrpcMetadata=true
+      - nestJs=true
+      - useOptionals=all
+  - plugin: buf.build/community/stephenh-ts-proto
+    out: ../auth-api/src/stubs
+    opt:
+      - addGrpcMetadata=true
+      - nestJs=true
+      - useOptionals=all
+  - plugin: buf.build/community/stephenh-ts-proto
+    out: ../rdv-api/src/stubs
+    opt:
+      - addGrpcMetadata=true
+      - nestJs=true
+      - useOptionals=all

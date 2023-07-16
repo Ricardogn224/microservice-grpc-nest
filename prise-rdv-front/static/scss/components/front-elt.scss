@@ -1,0 +1,30 @@
+.zone-offer {
+    transform: translateY(-50px);
+
+    .card-offer {
+        background: #E4FEFF 0% 0% no-repeat padding-box;
+        padding: 20px;
+        border-radius: 50px;
+        width: 20%;
+
+        .title {
+            font: normal normal bold 20px Copperplate;
+            color: black;
+        }
+
+        .content {
+            font: normal normal medium 15px Montserrat;
+            letter-spacing: 0px;
+
+            color: black;
+        }
+
+        .action {
+            font: normal normal bold 14px Montserrat;
+            letter-spacing: 0px;
+            color: #1B6B93;
+            opacity: 1;
+        }
+
+    }
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <title>home</title>
+</head>
+
+<body>
+    <nav>
+        <div class="flex space-between">
+            <div class="logo">
+                <p>Médecin sur rdv</p>
+            </div>
+
+            <div class="flex space-between zone-nav-link">
+                <div class="pro-link flex-center">
+                    <a >Vous etes un professionnel ?</a>
+                </div>
+                <div class="flex flex-center space-around zone-connexion">
+                    <div><img height="25px" width="25px" src="{{ url_for('static', filename='images/stetoscope.svg') }}" alt="" srcset=""></div>
+                    <div>
+                        <a href="/connexion">Se connecter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pres">
+        <div class="flex-center space-around ">
+            <div class="w-80 zone-pres">
+                <div class="presentation-text">
+                    <p class="txt-1">Gagnez du temps et trouver un rendez-vous</p>
+                    <p class="txt-1"> avec un professionnel de santé</p>
+                    <p class="txt-2">Gratuit, rapide et sécurisé</p>
+                </div>
+
+                <div class="flex">
+                   
+                    <form action="">
+                        <input type="text" name="search" placeholder="Tapez pour chercher un rendez vous " id="">
+                        <input type="text" name="ville" placeholder="où ? (ville, adresse ...) ">
+                        <button>cherchez</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="zone-offer">
+        <div class="flex space-around">
+
+            <div class="card-offer">
+                <div class="flex-center">
+                    <img src="{{ url_for('static', filename='images/stetoscope.svg') }}" alt="IMG">
+                </div>
+                <div>
+                    <h2 class="title">Consulter </h2>
+                    <p class="content">Accédez nrapidement aux disponibilité de vos pratiticiens</p>
+                    <a class="action" href="/list-medecin">Cherchez</a>
+                </div>
+            </div>
+
+            <div class="card-offer">
+                <div class="flex-center">
+                    <img src="{{ url_for('static', filename='images/stetoscope.svg') }}" alt="IMG">
+                </div>
+                <div>
+                    <h2 class="title">Prendre RDV</h2>
+                    <p class="content">Prenez rdv pour vous et vos proches directement en ligne pour une téléconsultation ou visite en
+                        cabinet</p>
+                    <a href="/list-medecin">Cherchez</a>
+                </div>
+            </div>
+
+
+            <div class="card-offer">
+                <div class="flex-center">
+                    <img src="{{ url_for('static', filename='images/stetoscope.svg') }}" alt="IMG">
+                </div>
+                <div>
+                    <h2 class="title">SMS de rappel </h2>
+                    <p class="content">Un sms de rappel avec toutes les informations pratiques est envoyé avant le rdv</p>
+                    <a class="action" href="/list-medecin">Cherchez</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section>
+        <div class="flex ">
+            <div>
+                <h1> Vos données sont protégées</h1>
+
+                <p>
+                    Nous nous engageons à protéger les données et la vie privée de nos utilisateurs. Nos utilisateurs
+                    bénéficient de technoligie de chiffrement avancées. Les données personnelles de nos utilisateurs
+                    sont en lieu sur.
+                </p>
+            </div>
+
+            <div>
+                <img src="{{ url_for('static', filename='images/medecin.png') }}" alt="IMG">
+            </div>
+        </div>
+    </section>
+
+
+
+</body>
+
+</html>

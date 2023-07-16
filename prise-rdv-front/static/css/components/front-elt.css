@@ -1,0 +1,26 @@
+.zone-offer {
+  transform: translateY(-50px);
+}
+.zone-offer .card-offer {
+  background: #E4FEFF 0% 0% no-repeat padding-box;
+  padding: 20px;
+  border-radius: 50px;
+  width: 20%;
+}
+.zone-offer .card-offer .title {
+  font: normal normal bold 20px Copperplate;
+  color: black;
+}
+.zone-offer .card-offer .content {
+  font: normal normal medium 15px Montserrat;
+  letter-spacing: 0px;
+  color: black;
+}
+.zone-offer .card-offer .action {
+  font: normal normal bold 14px Montserrat;
+  letter-spacing: 0px;
+  color: #1B6B93;
+  opacity: 1;
+}
+
+/*# sourceMappingURL=front-elt.css.map */

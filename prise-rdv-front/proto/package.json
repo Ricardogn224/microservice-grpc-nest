@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@bufbuild/buf": "^1.23.1",
+    "@prisma/client": "^5.0.0"
+  }
+}

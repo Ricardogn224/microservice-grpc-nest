@@ -1,0 +1,38 @@
+nav {
+
+    background: #4FC0D0 0% 0% no-repeat padding-box;
+
+    .logo {
+        margin-left: 20px;
+        text-align: left;
+        font: normal normal bold 20px Copperplate;
+        color: white;
+
+    }
+
+    .pro-link {
+
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border-radius: 6px;
+        opacity: 1;
+        margin: auto;
+        height: 60%;
+
+        a {
+            font: normal normal bold 20px Copperplate;
+            color: #1B6B93;
+            padding: 10px;
+        }
+    }
+
+    .zone-nav-link {
+        width: 40%;
+    }
+
+
+    .zone-connexion {
+        width: 200px;
+    }
+
+
+}

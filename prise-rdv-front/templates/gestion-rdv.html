@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <title>home</title>
+</head>
+
+<body>
+    <section>
+        <nav class="navbar-gest">
+            <div class="flex space-between">
+                <div class="">
+                    <ul class="flex">
+                        <li class="mr-10"><img height="25px" width="25px" src="{{ url_for('static', filename='images/stetoscope.svg') }}" alt="" srcset=""></li>
+                        <li>Mon profil</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="flex">
+                        <li><a href="/gestion-rdv">Mes rendez vous </a></li>
+                        <li><a href="/list-medecin">Prendez rendez vous </a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </section>
+    <section>
+
+        <div class="flex-center">
+            <div>
+                <h2>
+                    Bienvenue 
+                </h2>
+            </div>
+           
+        </div>
+    </section>
+
+    <section>
+
+        <div >
+            <div class="flex-center">
+                <h2>Mes rendez vous </h2>
+            </div>
+            
+
+            <div class="flex-center" >
+                <table class="form-card">
+                    <thead>
+                        <tr class="">
+                            <th>Utilisateur </th>
+                            <th>Date</th>
+                            <th>Heure</th>
+                            <th>Lieu</th>
+                            <th>Statut</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for rdv in rdvs %}
+                        <tr>
+                            <td class="flex-center">{{ rdv["name"] }} </td>
+                            <td>{{ rdv["rdv_date"] }}</td>
+                            <td>{{ rdv["rdv_hour"] }}</td>
+                            <td>{{ rdv["idLieu"] }}</td>
+                            <td>{{ rdv["status"] }}</td>
+                            <td class="flex">
+                                
+                                <a class="mr-10" href="/update_status/{{rdv["id"]}}/annuler"> annuler</a>
+                                <a href="/update_status/{{rdv["id"]}}/confirmer"> yes</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="form-card">
+                <div class="flex-center">
+                    <h2>Prendre un rendez-vous</h2>
+                </div>
+                <form action="/gestion-rdv" method="post">
+                    <div>
+                        <label for="">Utilisateur</label>
+                        <select name="participant_id" id="">
+                            {% for user in users %}
+                            <option name="" value="{{ user["id"] }}">{{ user["firstName"] }} {{ user["prenom"] }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="">Date</label>
+                        <input type="date" name="rdv_date" id="">
+                    </div>
+
+                    <div>
+                        <label for="">Heure</label>
+                        <input type="time" name="rdv_hour" id="">
+                    </div>
+                    
+                    <div>
+                        <label for="">Lieu</label>
+                        <select name="lieu_id" id="">
+                            {% for lieu in lieux %}
+                            <option value="{{ lieu["id"] }}">{{ lieu["format"] }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+
+
+                   
+
+                    <div>
+                        <label for="">description</label>
+                        <input type="text" name="description" id="">
+                    </div>
+                        
+
+                    <input type="submit" value="Prendre un rendez-vous">
+                </form>
+            </div>
+
+        </div>
+
+    </section>
+</body>
+
+</html>
