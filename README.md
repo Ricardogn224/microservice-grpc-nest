@@ -32,3 +32,5 @@ Pour lancer les 3 APis, il faut lancer à la racine du projet de nestJs cette co
 ## Lancer le front
 
 Pour lancer le front, exécuter cette commande à la racine du dossier front(prise-rdv-front) : python3 app.py
+
+Puis ouvrir votre navigateur et taper l'URL : localhost:9001
